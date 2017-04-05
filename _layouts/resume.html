@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<main class="container">
+
+
+
+  <article class="typeset">
+    <div class="desktop-resume">
+           <img src="{{ "/assets/resume.png" | prepend: site.baseurl }}" alt="">
+      <p class="pdf-link"><a href="{{site.baseurl}}/assets/resume.pdf" target="_blank">download resume</a></p>
+    </div>
+
+     <img class="mobile-resume" src="{{ "/assets/resume-mobile.png" | prepend: site.baseurl }}" alt="">
+     <p class="pdf-link-mobile"><a href="{{site.baseurl}}/assets/resume.pdf" target="_blank">download resume</a></p>
+  </article>
+</main>
+{% include resume-footer.html %}

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-04T22:50:28+01:00</updated><id>http://localhost:4000//</id><title type="html">Chris Brennan - Web Development</title><subtitle>getting started with alembic</subtitle><author><name>Chris Brennan</name></author><entry><title type="html">Gulp Setup</title><link href="http://localhost:4000/gulp/2017/04/04/gulp-setup/" rel="alternate" type="text/html" title="Gulp Setup" /><published>2017-04-04T00:00:00+01:00</published><updated>2017-04-04T00:00:00+01:00</updated><id>http://localhost:4000/gulp/2017/04/04/gulp-setup</id><content type="html" xml:base="http://localhost:4000/gulp/2017/04/04/gulp-setup/">&lt;p&gt;&lt;img src=&quot;/assets/gulp-logo.png&quot; alt=&quot;alt text&quot; title=&quot;fart&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;setting-up-gulp&quot;&gt;Setting up gulp&lt;/h1&gt;
+&lt;p&gt;Thanks to a kind blogger, I learned how to use gulp and set it up with my projects. Below are my notes. For a more in-depth explanation, visit &lt;a href=&quot;https://www.taniarascia.com/getting-started-with-gulp//&quot;&gt;Tania Rascia’s Site&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Gulp is a swiss army knife for web developers. It’s a javascript task runner for project workflows utilizing helpful plugins such as sass and auto prefixers etc…&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-started&quot;&gt;Getting started&lt;/h3&gt;
+
+&lt;p&gt;Download and install &lt;a href=&quot;https://nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, open PowerShell and run as Administrator&lt;/p&gt;
+
+&lt;h3 id=&quot;first-step---install-gulp-globally&quot;&gt;First Step - Install gulp globally&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install --global gulp-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;second-step---cd-into-project-directory-and-create-packagejason-file&quot;&gt;Second Step - cd into project directory and create package.jason file&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;third-step---install-node-and-gulp&quot;&gt;Third Step - install node and gulp&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install --save-dev gulp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;fourth-step---install-gulp-plugins&quot;&gt;Fourth Step - install gulp plugins&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install --save-dev gulp-sass gulp-cssnano gulp-sourcemaps gulp-autoprefixer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;fifth-step&quot;&gt;Fifth Step&lt;/h3&gt;
+
+&lt;p&gt;Create gulpfile.js in your project directory and add code below.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;'use strict';
+
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var cssnano = require('gulp-cssnano');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
+
+gulp.task('workflow', function () {
+	gulp.src('./src/sass/**/*.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass().on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
+		.pipe(cssnano())
+		.pipe(sourcemaps.write('./'))
+
+	.pipe(gulp.dest('./dist/css/'))
+});
+
+gulp.task('default', function () {
+	gulp.watch('./src/sass/**/*.scss', ['workflow']);
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;seventh-step---create-src-folder-and-add-your-scss-files&quot;&gt;Seventh Step - create src folder and add your scss files&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/gulp-dir.png&quot; alt=&quot;alt text&quot; title=&quot;fart&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;eighth-step---run-gulp&quot;&gt;Eighth Step - run gulp&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gulp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After you run this command, go to your scss files, start editing them and save them. Go back to your directory and you’ll notice a dist folder was created containing your minified css. Inside you’ll notice the prefixes as well.&lt;/p&gt;</content><author><name>Chris Brennan</name></author><category term="Gulp" /><summary type="html">Thanks to a blogger by the name of Tania Rascia, I learned how use gulp to set up my web projects...</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/placeholder-social.png" /></entry><entry><title type="html">Building Layouts With Flexbox</title><link href="http://localhost:4000/css/2017/03/25/building-layouts-with-flexbox/" rel="alternate" type="text/html" title="Building Layouts With Flexbox" /><published>2017-03-25T00:00:00+01:00</published><updated>2017-03-25T00:00:00+01:00</updated><id>http://localhost:4000/css/2017/03/25/building-layouts-with-flexbox</id><content type="html" xml:base="http://localhost:4000/css/2017/03/25/building-layouts-with-flexbox/">&lt;h2 id=&quot;tutorial&quot;&gt;Tutorial&lt;/h2&gt;
+
+&lt;p&gt;Lets build this layout using flexbox&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/chocolate-moon-shine-layout-1.png&quot; alt=&quot;alt text&quot; title=&quot;fart&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;first-step&quot;&gt;First Step&lt;/h2&gt;
+
+&lt;p&gt;Create a div with a wrapper class. This will be your container for the rest of your content.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&amp;lt;section class=&quot;wrapper&quot;&amp;gt;
+
+&amp;lt;/section&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Set a width of 70% and center it using margin: auto and add the following css.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+.wrapper{
+  width: 70%;
+  margin: 3rem auto;
+  text-align: center;
+  background: white;
+  padding: 2rem 0;
+  border: 1px solid black;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/chocolate-moon-shine-layout-step-1.png&quot; alt=&quot;alt text&quot; title=&quot;fart&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;second-step&quot;&gt;Second Step&lt;/h2&gt;
+&lt;p&gt;Add a div with the class of inner-wrap div and inside your inner-wrap add 3 divs with a class of col.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&amp;lt;section class=&quot;wrapper&quot;&amp;gt;
+  &amp;lt;h2&amp;gt;Our Products&amp;lt;/h2&amp;gt;
+
+   &amp;lt;div class=&quot;inner-wrap&quot;&amp;gt;
+     &amp;lt;div class=&quot;col&quot;&amp;gt;
+       &amp;lt;img src=&quot;http://placehold.it/350x350&quot;&amp;gt;
+       &amp;lt;h3&amp;gt;Moonshine Bars&amp;lt;/h3&amp;gt;
+     &amp;lt;/div&amp;gt;
+
+     &amp;lt;div class=&quot;col&quot;&amp;gt;
+       &amp;lt;img src=&quot;http://placehold.it/350x350&quot;&amp;gt;
+       &amp;lt;h3&amp;gt;Moonshine Bars&amp;lt;/h3&amp;gt;
+     &amp;lt;/div&amp;gt;
+
+     &amp;lt;div class=&quot;col&quot;&amp;gt;
+       &amp;lt;img src=&quot;http://placehold.it/350x350&quot;&amp;gt;
+       &amp;lt;h3&amp;gt;Moonshine Bars&amp;lt;/h3&amp;gt;
+     &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+
+&amp;lt;/section&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Add a 80% width on your col images with 100% border-radius to make the placeholder images into circles.
+So right now your columns should be stacked. To inline the divs into a row, add display flex on the inner-wrap class. Next add flex-basis of 32% on your divs with the class of col.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+.wrapper{
+  width: 70%;
+  margin: 3rem auto;
+  text-align: center;
+  background: white;
+  padding: 2rem 0;
+  border: 1px solid black;
+}
+.col img{
+  width: 80%;
+  border-radius: 100%;
+}
+.inner-wrap{
+  display: flex;
+  border: 1px solid blue;
+}
+.col{
+  flex-basis: 32%;
+  height: auto;
+  border: 1px solid green;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/chocolate-moon-shine-layout-step-2.png&quot; alt=&quot;alt text&quot; title=&quot;fart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To add margin in between the columns we can use the justify-content property by adding space-between. This will spread out the columns in the parent container using up the rest of the space given.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+.inner-wrap{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/chocolate-moon-shine-layout-step-3.png&quot; alt=&quot;alt text&quot; title=&quot;fart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To make the layout responsive, add the following css.
+Setting flex-direction to column will stack the cols on top of each other.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+@media (max-width: 768px){
+  .inner-wrap{
+    flex-direction: column;
+  }
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/chocolate-moon-shine-layout-step-4.png&quot; alt=&quot;alt text&quot; title=&quot;fart&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;codepen&quot;&gt;Codepen&lt;/h2&gt;
+
+&lt;p&gt;View code &lt;a href=&quot;http://codepen.io/drunktuts/pen/mWKNeY?editors=1100&quot;&gt;http://codepen.io/drunktuts/pen/mWKNeY?editors=1100&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Flexbox allows you to control your layouts without having to using inline or floats. No longer do we have to use annoying hacks like clearfix or overflow hidden to prevent collapsing. Flexbox provides us with helpful properties like justify-content space-between allowing us to add margins to our columns. Learn more about flexbox. &lt;a href=&quot;https://css-tricks.com/snippets/css/a-guide-to-flexbox/&quot;&gt;Learn more&lt;/a&gt;&lt;/p&gt;</content><author><name>Chris Brennan</name></author><category term="CSS" /><summary type="html">To get familiar with flexbox, I decided re-create layouts using flexbox...</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/placeholder-social.png" /></entry><entry><title type="html">Flexbox Overview</title><link href="http://localhost:4000/css/2017/03/16/flexbox/" rel="alternate" type="text/html" title="Flexbox Overview" /><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><id>http://localhost:4000/css/2017/03/16/flexbox</id><content type="html" xml:base="http://localhost:4000/css/2017/03/16/flexbox/">&lt;h3 id=&quot;want-to-inline-or-float-your-columns&quot;&gt;Want to inline or float your columns?&lt;/h3&gt;
+
+&lt;p&gt;Add display: flex to your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/withflex.png&quot; alt=&quot;alt text&quot; title=&quot;with flex&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;want-them-to-stack&quot;&gt;Want them to stack?&lt;/h3&gt;
+
+&lt;p&gt;Remove display: flex from your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/woutflex.png&quot; alt=&quot;alt text&quot; title=&quot;without flex&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;want-to-change-the-order-of-the-columns&quot;&gt;Want to change the order of the columns?&lt;/h3&gt;
+
+&lt;p&gt;Add order property to your columns. Adjust 1, 2, 3 etc depending on the order you want.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/order.png&quot; alt=&quot;alt text&quot; title=&quot;order changed&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;want-to-adjust-column-widths&quot;&gt;Want to adjust column widths?&lt;/h3&gt;
+
+&lt;p&gt;Add flex property to your columns. Column 1 has flex:2. Column 2 has flex 2. Column 3 has flex 1.
+You have to add your column margins manually.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/column-width-flex.png&quot; alt=&quot;alt text&quot; title=&quot;flex-width&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;or-you-can-use-flex-basis-flexbox-way-of-saying-width&quot;&gt;Or you can use flex-basis (flexbox way of saying width)&lt;/h3&gt;
+
+&lt;p&gt;Add flex-basis to each column and add say… 35% on column 1 and 2 and 20% on column 3. The 10% left over will be your margins when you add justify-content: space-between on the parent container. Take a look at the second photo down below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/column-width-flex-basis.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;justify-content-space-between-added-to-parent-container&quot;&gt;Justify-content: space-between added to parent container.&lt;/h3&gt;
+
+&lt;p&gt;Use this only when you use flex-basis on your columns. This will give margins to your columns. As long as your columns add under 100% of the parent containers width. Whatevers left over will be your margins using space-between.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/space-between.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;other-justify-content-options-what-if-you-want-to-align-columns-to-the-left-right-or-center-them&quot;&gt;Other justify-content options; What if you want to align columns to the left, right or center them?&lt;/h3&gt;
+
+&lt;p&gt;Add justify-content: flex-start to your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/left.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add justify-content: flex-end to your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/right.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add justify-content: center to your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/center.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;want-equal-height-columns&quot;&gt;Want equal height columns?&lt;/h3&gt;
+
+&lt;p&gt;No need to add anything. By default align-items is set to stretch on the parent container. This enables equal height columns.&lt;/p&gt;
+
+&lt;h3 id=&quot;oh-you-dont-want-equal-height-columns&quot;&gt;Oh, you don’t want equal height columns?&lt;/h3&gt;
+
+&lt;p&gt;Simply apply align-items to your parent container and add either flex-start, flex-end or center depending on what look you want. Examples below.&lt;/p&gt;
+
+&lt;p&gt;Add align-items: flex-start to your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/align-start.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add align-items: flex-end to your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/align-end.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add align-items: center to your parent container.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/align-center.png&quot; alt=&quot;alt text&quot; title=&quot;flex-basis&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;codepen&quot;&gt;Codepen&lt;/h3&gt;
+
+&lt;p&gt;View code &lt;a href=&quot;https://codepen.io/drunktuts/pen/YZroyy&quot;&gt;https://codepen.io/drunktuts/pen/YZroyy&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;I tried learning flexbox a couple of years ago and was put off by the lack of support and documentation. I decided to re-visit flexbox after reading that about 97% of all web traffic will be using browsers that support flexbox as of right now.&lt;/p&gt;
+
+&lt;p&gt;At first it seemed very confusing, but now it just makes sense and is a time saver for layout building.
+I’m excited to start using flexbox for future projects. It’s time to get on the wagon. You won’t regret it.&lt;/p&gt;
+
+&lt;h3 id=&quot;want-to-learn-more&quot;&gt;Want to learn more?&lt;/h3&gt;
+
+&lt;p&gt;Watch this video for a more in-depth tutorial&lt;/p&gt;
+
+&lt;iframe width=&quot;100%&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/k32voqQhODc&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>Chris Brennan</name></author><category term="CSS" /><summary type="html">Starting as of right now 97% of web traffic supports browsers that use flexbox. If you're not using flexbox then it's time to start learning...</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/placeholder-social.png" /></entry><entry><title type="html">My Internship</title><link href="http://localhost:4000/general/2016/03/10/internship/" rel="alternate" type="text/html" title="My Internship" /><published>2016-03-10T00:00:00+00:00</published><updated>2016-03-10T00:00:00+00:00</updated><id>http://localhost:4000/general/2016/03/10/internship</id><content type="html" xml:base="http://localhost:4000/general/2016/03/10/internship/">&lt;h1 id=&quot;coming-soon&quot;&gt;Coming Soon&lt;/h1&gt;</content><author><name>Chris Brennan</name></author><category term="General" /><summary type="html">My expereince interning at RedTree Web Design...</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://unsplash.it/1200/400?image=1048" /></entry></feed>

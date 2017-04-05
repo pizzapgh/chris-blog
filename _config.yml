@@ -1,0 +1,103 @@
+# Site configuration
+# 1. Files excluded from Jekyll builds
+# 2. Installed Gems
+# 3. Gem settings
+# 4. Jekyll settings
+# 5. Collections
+# 6. Jekyll collections settings
+# 7. Site settings
+# 8. Site navigation
+
+# 1. Files excluded from Jekyll builds
+exclude:
+- README.md
+- screenshot.png
+- LICENSE
+- CNAME
+- Gemfile
+- Gemfile.lock
+- demo/*
+- alembic-jekyll-theme.gemspec
+
+# 2. Installed Gems
+gems:
+- jekyll-sitemap
+- jekyll-mentions
+- jekyll-paginate
+- jekyll-seo-tag
+- jekyll-redirect-from
+- jekyll-feed
+- jemoji
+
+# 3. Gem settings
+paginate: 3 # jekyll-paginate > items per page
+paginate_path: blog/page:num # jekyll-paginate > blog page
+jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
+twitter:
+  username: pizzapgh # jekyll-seo-tag > Owners twitter username
+author: Chris Brennan # jekyll-seo-tag > default author
+social: # jekyll-seo-tag > social overrides
+  name: Chris Brennan # jekyll-seo-tag > real name
+  links:  # jekyll-seo-tag > social aliases (sameAs)
+    - https://twitter.com/pizzapgh
+    - https://github.com/pizzapgh
+
+# 4. Jekyll settings
+sass:
+  style: compressed # Style compression
+permalink: pretty  # Permalink style (/YYYY/MM/DD/page-name/)
+excerpt_separator: <!-- more --> # Marks end of excerpt in posts
+timezone: US/Eastern # Timezone for blog posts and alike
+
+# 5. Collections
+collections:
+  posts:
+    title: Posts # Needed for Siteleaf
+    output: true
+    description: "My ideas fart" # The post list page content
+    feature_text: |
+      Welcome to the blog
+    feature_image: "https://unsplash.it/1300/400?image=1067"
+
+# 6. Jekyll collections settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page # Default layout
+      image: "/assets/placeholder-social.png" # Default image for sharing
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post # Default layout
+      image: "/assets/placeholder-social.png" # Default image for sharing
+
+# 7. Site settings
+encoding: utf-8 # Make sure the encoding is right
+title: "Chris Brennan - Web Development" # Site name or title, also used in jekyll-seo-tag
+logo: "/assets/me-pic.png" # Site logo, also used in jekyll-seo-tag
+description: "getting started with alembic" # Site description and default description, also used in jekyll-seo-tag
+repo: "https://github.com/pizzapgh/alembic-starter"
+email: "chrisbrennanpgh@gmail.com"
+disqus: "disqus_VPt5j6jj6M"
+avatarurl: "https://en.gravatar.com/userimage/95175156/73e259aa00c36886d67fc8353a0665d0" # Uses avatars for favicons to get multple sites, eg Gravatar, Twitter, GitHub
+baseurl: ""
+
+# 8. Site navigation
+navigation_header:
+  Home: /
+  Blog: /blog/
+  Contact: /contact/
+
+navigation_footer:
+  Created by Chris Brennan: http://chrisbrennanpgh.com/
+
+social_links:
+  Twitter: https://twitter.com/pizzapgh
+  GitHub: https://github.com/pizzapgh
+  codepen: https://codepen.io/drunktuts/
+  behance: https://www.behance.net/chrisbrennandesigns/

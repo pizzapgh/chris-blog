@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+
+
+<main class="container">
+
+
+
+  <article class="post-container typeset">
+    <div class="center">
+      {% include site-logo.html %}
+    </div>
+    <!--- <h1 class="center post-title">{{ page.title }}</h1> -->
+
+    {{ content }}
+
+    <a class="button-post" href="{{site.baseurl}}/blog/index.html"> &larr;</a>
+
+  </article>
+
+
+
+
+</main>
+
+{% include site-footer.html %}
